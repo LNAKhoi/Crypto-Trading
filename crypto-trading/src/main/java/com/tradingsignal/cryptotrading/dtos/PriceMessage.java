@@ -1,7 +1,6 @@
 package com.tradingsignal.cryptotrading.dtos;
 
 import com.tradingsignal.cryptotrading.enums.Symbol;
-import com.tradingsignal.cryptotrading.enums.TradeSide;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,9 +8,8 @@ import java.math.BigDecimal;
 
 @Getter
 @Setter
-public class TradeInputDto {
-    Long userId;
-    Symbol symbol;
-    TradeSide side;
-    BigDecimal quantity;
+public class PriceMessage {
+    private Symbol symbol;
+    private BigDecimal bid;
+    private BigDecimal ask;
 }
