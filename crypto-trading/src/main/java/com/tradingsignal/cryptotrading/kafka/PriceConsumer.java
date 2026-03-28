@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 public class PriceConsumer {
     private final PriceRepository priceRepository;
 
-    @KafkaListener(topics = "${kafka.price.topic}", groupId = "${crypto-price-group}")
+    @KafkaListener(topics = "${kafka.price.topic}", groupId = "${kafka.price.group}")
     public void consume(PriceMessage priceMessage) {
         var price = priceRepository.findPriceBySymbol(priceMessage.getSymbol()).orElseGet(Price::new);
         price.setSymbol(priceMessage.getSymbol());
