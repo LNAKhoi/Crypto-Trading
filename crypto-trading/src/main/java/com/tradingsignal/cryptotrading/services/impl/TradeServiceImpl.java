@@ -11,6 +11,7 @@ import com.tradingsignal.cryptotrading.services.TradeService;
 import com.tradingsignal.cryptotrading.utils.SymbolUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -22,6 +23,7 @@ public class TradeServiceImpl implements TradeService {
     private final WalletRepository walletRepository;
     private final TradeRepository tradeRepository;
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public Trade excecuteTrade(TradeInputDto tradeInputDto) {
         var price = priceRepository.findPriceBySymbol(tradeInputDto.getSymbol()).orElseThrow();
