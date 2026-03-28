@@ -32,6 +32,7 @@ public class PriceAggregationServiceImpl implements PriceAggregationService {
     private final KafkaTemplate<String, PriceMessage> kafkaTemplate;
 
     /**
+     * TASK 1: Price Aggregation
      * This method acts as the producer
      * to send the price into kafka topics
      */
